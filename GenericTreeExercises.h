@@ -322,6 +322,20 @@ std::vector<T> traverseLevels(GenericTree<T>& tree) {
   auto rootNodePtr = tree.getRootPtr();
   if (!rootNodePtr) return results;
 
+  std::queue<TreeNode*> nodesToExplore;
+  nodesToExplore.push(rootNodePtr);
+
+  while (!nodesToExplore.empty()) {
+    TreeNode* frontNode = nodesToExplore.front();
+    nodesToExplore.pop();
+    results.push_back(frontNode->data);
+
+    for (auto childPtr : frontNode->childrenPtrs) {
+      nodesToExplore.push(childPtr);
+    }
+  }
+
+
   //      *****************************************************
   //                           EXERCISE 2
   //    TODO: Your work here! You should edit this function body!
