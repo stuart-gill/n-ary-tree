@@ -86,7 +86,15 @@
 // properly destroyed first. There is no need to return a value because the
 // tree is edited in-place by reference.
 static void treeFactory(GenericTree<int>& tree) {
-
+  
+  // this part seems easy almost to a fault ... perhaps I'm doing it in a dumb / obvious way? Just using supplied methods?
+  tree.clear();
+  auto root = tree.createRoot(4);
+  auto first = root->addChild(8);
+  auto second = root->addChild(15);
+  auto third = first->addChild(16);
+  auto fourth = first->addChild(23);
+  auto fifth = third->addChild(42);
   //      *****************************************************
   //                           EXERCISE 1
   //    TODO: Your work here! You should edit this function body!
